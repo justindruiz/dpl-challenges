@@ -1,15 +1,18 @@
 class Person
-  include Helper
-  attr_accessible :attributes, :energy
 
-  def initalize(attributes = {})
+  require_relative 'helper'
+  include Helper
+
+  attr_accessor :attributes, :energy
+
+  def initialize(attributes = {})
     @attributes = attributes
     @energy = 10
   end
 
   # This returns a string of the person's name
   def name
-    attributes(:name)
+    @attributes[:name]
   end
 
   def first_name
@@ -21,15 +24,15 @@ class Person
   end
 
   def age
-    attributes[age]
+    @attributes[:age]
   end
 
   def birthyear
-     age - Time.now.to_i
+   Time.now.year - age
   end
 
   def say(words)
-    puts 'words'
+    puts words
   end
 
   def run
@@ -39,9 +42,9 @@ class Person
   def energy_level
     case @energy
     when -100..-1
-      "OMG ABOUT TO DIE!
-    when 0..
-      "tired'
+      "OMG ABOUT TO DIE!"
+    when 0..3
+      "tired"
     when 4..6
       "doing ok"
     when 6..10

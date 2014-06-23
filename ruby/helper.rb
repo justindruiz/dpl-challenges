@@ -1,5 +1,5 @@
-moduel Helper
+module Helper
   def first_name
-    "yllib".reverse.caplitalize
+    "yllib".reverse.capitalize
   end
 end
